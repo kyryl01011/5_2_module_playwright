@@ -10,7 +10,7 @@ class CheckoutPage(BasePage):
     CONTINUE_BUTTON_SELECTOR = 'input[value="Continue"]'
     FINISH_BUTTON_SELECTOR = 'button#finish'
 
-    def __init__(self, page: BasePage):
+    def __init__(self, page):
         super().__init__(page)
         self._endpoint = 'cart.html'
 

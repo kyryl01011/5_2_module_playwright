@@ -35,21 +35,3 @@ def test_logout(browser):
     logout_page = Header(page)
     login_page.login('standard_user', 'secret_sauce')
     logout_page.log_out()
-
-
-
-# playwright = sync_playwright().start()
-# browser = playwright.chromium.launch(headless=False, slow_mo=50)
-# page = browser.new_page()
-# page.goto('https://www.w3.org/')
-# page.wait_for_load_state('load')
-# locator_consortium = page.get_by_text("World Wide Web Consortium", exact=True)
-# locator_about = page.get_by_text("About", exact=True)
-# locator_standards = page.get_by_text("Standards", exact=True)
-# locator_noexist = page.get_by_text("Nonexistent Text", exact=True)
-# expect(locator_consortium).to_be_visible, 'Текст не найден' 
-# expect(locator_about).to_be_visible, 'Текст не найден'
-# expect(locator_standards).to_be_visible, 'Текст не найден' 
-# expect(locator_noexist).to_be_hidden, 'Текст найден' 
-# browser.close()
-# playwright.stop()

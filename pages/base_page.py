@@ -1,4 +1,3 @@
-import allure
 from playwright.sync_api import Page, expect
 from actions.page_actions import PageActions
 
@@ -16,5 +15,3 @@ class BasePage:
     @_get_page_url.setter
     def _get_page_url(self, endpoint):
         self._endpoint = endpoint
-
-
