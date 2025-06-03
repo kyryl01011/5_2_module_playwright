@@ -4,14 +4,11 @@ import requests
 from playwright.sync_api import sync_playwright
 from faker import Faker
 
-# @pytest.fixture(scope='session')
-# def auth_session():
-#     session = requests.Session()
-#     session.headers.update(HEADERS)
-#     response = session.post(f'{BASE_URL}/api/v1/login/test-token')
-#     print(response.json())
+from src.data_models.customer import CustomerCreationModel
+
 
 faker = Faker()
+
 
 @pytest.fixture(scope='session')
 @allure.title('Initialize playwright and browser > Close after use')
@@ -22,7 +19,12 @@ def browser():
     browser.close()
     playwright.stop()
 
+
 @pytest.fixture(scope='module')
 @allure.title('Generate random user data for checkout')
-def generate_random_customer_data():
-    return {'first-name': faker.first_name(), 'last-name': faker.last_name(), 'zip-code': faker.zipcode()}
+def generated_customer_data() -> CustomerCreationModel:
+    return CustomerCreationModel(
+        firstname=faker.first_name(),
+        lastname=faker.last_name(),
+        zipcode=faker.zipcode()
+    )

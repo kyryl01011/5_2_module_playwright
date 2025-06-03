@@ -1,19 +1,13 @@
-import requests
-import pytest
-from playwright.sync_api import sync_playwright, expect
+from src.components.header import Header
+from src.pages.checkout_page import CheckoutPage
+from src.pages.inventory_page import InventoryPage
+from src.pages.login_page import LoginPage
 
-from components.header import Header
-from pages.checkout_page import CheckoutPage
-from pages.inventory_page import InventoryPage
-from pages.login_page import LoginPage
 
-def test_userflow(browser, generate_random_customer_data):
-    '''
+def test_userflow(browser, generated_customer_data):
+    """
     Login into account, add first item to cart, checkout and logout
-    '''
-    firstname = generate_random_customer_data['first-name']
-    lastname = generate_random_customer_data['last-name']
-    zipcode = generate_random_customer_data['zip-code']
+    """
     page = browser.new_page()
     login_page = LoginPage(page)
     inventory_page = InventoryPage(page)
@@ -22,9 +16,10 @@ def test_userflow(browser, generate_random_customer_data):
     login_page.login('standard_user', 'secret_sauce')
     inventory_page.add_first_item_to_cart()
     checkout_page.start_checkout()
-    checkout_page.fill_checkout_form(firstname, lastname, zipcode)
+    checkout_page.fill_checkout_form(generated_customer_data.firstname, generated_customer_data.lastname, generated_customer_data.zipcode)
     checkout_page.finish_checkout()
     logout_page.log_out()
+
 
 def test_logout(browser):
     """

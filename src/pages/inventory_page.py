@@ -1,5 +1,6 @@
 import allure
-from pages.base_page import BasePage
+from src.pages.base_page import BasePage
+
 
 class InventoryPage(BasePage):
     ADD_TO_CART_BUTTON_SELECTOR = 'div.inventory_item:has-text("Sauce Labs Backpack") >> button#add-to-cart-sauce-labs-backpack'

@@ -1,6 +1,6 @@
-from pages.base_page import BasePage
-from actions.page_actions import PageActions
+from src.pages.base_page import BasePage
 import allure
+
 
 class LoginPage(BasePage):
     INPUT_LOGIN_SELECTOR = 'input#user-name'

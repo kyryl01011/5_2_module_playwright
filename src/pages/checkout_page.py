@@ -1,6 +1,6 @@
-from pages.base_page import BasePage
-from actions.page_actions import PageActions
+from src.pages.base_page import BasePage
 import allure
+
 
 class CheckoutPage(BasePage):
     CHECKOUT_BUTTON_SELECTOR = 'button#checkout'
@@ -28,7 +28,7 @@ class CheckoutPage(BasePage):
         self.action.type_text(self.FIRSTNAME_INPUT_SELECTOR, firstname)
         self.action.type_text(self.LASTNAME_INPUT_SELECTOR, lastname)
         self.action.type_text(self.ZIP_INPUT_SELECTOR, zipcode)
-        
+
     @allure.title('Finish checkout')
     def finish_checkout(self):
         self.action.clickButton(self.CONTINUE_BUTTON_SELECTOR)

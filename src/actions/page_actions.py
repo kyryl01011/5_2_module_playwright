@@ -1,6 +1,7 @@
 from playwright.sync_api import Page, expect
 import allure
 
+
 class PageActions:
     def __init__(self, page: Page):
         self.page = page
@@ -9,7 +10,7 @@ class PageActions:
         with allure.step(f'Go to URL: {url}'):
             self.page.goto(url)
 
-    def check_url(self, url): # ? может нужно было назвать assert_url или что-то такое
+    def check_url(self, url):
         with allure.step(f'Check if current URL is {url}'):
             expect(self.page).to_have_url(url)
 
@@ -33,7 +34,7 @@ class PageActions:
     def is_element_enabled(self, selector):
         with allure.step(f'Check if element {selector} is enabled'):
             expect(self.page.locator(selector)).to_be_enabled()
-    
+
     def input_text(self, selector, text):
         with allure.step(f'Fill {selector} with text: "{text}"'):
             self.page.fill(selector, text)
@@ -53,7 +54,7 @@ class PageActions:
     def assert_text_present_on_page(self, text):
         with allure.step(f'Check if text presented in page - {text}'):
             expect(self.page.locator('body')).to_contain_text(text)
-    
+
     def assert_text_present_in_element(self, selector, text):
         with allure.step(f'Check if text {text} is in element {selector}'):
             expect(self.page.locator(selector)).to_have_text(text)
