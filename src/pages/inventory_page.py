@@ -12,6 +12,6 @@ class InventoryPage(BasePage):
 
     @allure.title('Adds first item to the cart')
     def add_first_item_to_cart(self):
-        self.action.check_url(self._get_page_url)
-        self.action.clickButton(self.ADD_TO_CART_BUTTON_SELECTOR)
-        self.action.assert_text_present_in_element(self.REMOVE_FROM_CART_BUTTON_SELECTOR, 'Remove')
+        self.check_url(self._get_page_url)
+        self.clickButton(self.ADD_TO_CART_BUTTON_SELECTOR)
+        self.assert_text_present_in_element(self.REMOVE_FROM_CART_BUTTON_SELECTOR, 'Remove')

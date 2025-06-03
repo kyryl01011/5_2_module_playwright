@@ -16,23 +16,23 @@ class CheckoutPage(BasePage):
 
     @allure.title('Open checkout page > go to checkout form')
     def start_checkout(self):
-        self.action.navigate_to(self._get_page_url)
-        self.action.wait_page_load(self._get_page_url)
-        self.action.check_url(self._get_page_url)
-        self.action.is_element_enabled(self.CHECKOUT_BUTTON_SELECTOR)
-        self.action.clickButton(self.CHECKOUT_BUTTON_SELECTOR)
-        self.action.wait_element_to_appear(self.FIRSTNAME_INPUT_SELECTOR)
+        self.navigate_to(self._get_page_url)
+        self.wait_page_load(self._get_page_url)
+        self.check_url(self._get_page_url)
+        self.is_element_enabled(self.CHECKOUT_BUTTON_SELECTOR)
+        self.clickButton(self.CHECKOUT_BUTTON_SELECTOR)
+        self.wait_element_to_appear(self.FIRSTNAME_INPUT_SELECTOR)
 
     @allure.title('Fill checkout form')
     def fill_checkout_form(self, firstname, lastname, zipcode):
-        self.action.type_text(self.FIRSTNAME_INPUT_SELECTOR, firstname)
-        self.action.type_text(self.LASTNAME_INPUT_SELECTOR, lastname)
-        self.action.type_text(self.ZIP_INPUT_SELECTOR, zipcode)
+        self.type_text(self.FIRSTNAME_INPUT_SELECTOR, firstname)
+        self.type_text(self.LASTNAME_INPUT_SELECTOR, lastname)
+        self.type_text(self.ZIP_INPUT_SELECTOR, zipcode)
 
     @allure.title('Finish checkout')
     def finish_checkout(self):
-        self.action.clickButton(self.CONTINUE_BUTTON_SELECTOR)
-        self.action.wait_element_to_appear(self.FINISH_BUTTON_SELECTOR)
-        self.action.is_element_enabled(self.FINISH_BUTTON_SELECTOR)
-        self.action.clickButton(self.FINISH_BUTTON_SELECTOR)
-        self.action.assert_text_present_on_page('Thank you for your order!')
+        self.clickButton(self.CONTINUE_BUTTON_SELECTOR)
+        self.wait_element_to_appear(self.FINISH_BUTTON_SELECTOR)
+        self.is_element_enabled(self.FINISH_BUTTON_SELECTOR)
+        self.clickButton(self.FINISH_BUTTON_SELECTOR)
+        self.assert_text_present_on_page('Thank you for your order!')
