@@ -7,10 +7,6 @@ class LoginPage(BasePage):
     INPUT_PASSWORD_SELECTOR = 'input#password'
     LOGIN_BUTTON_SELECTOR = 'input#login-button'
 
-    def __init__(self, page: BasePage):
-        super().__init__(page)
-        self._endpoint = ''
-
     @allure.title('Open website > Fill form > Log in account')
     def login(self, username, password):
         self.navigate_to(self._get_page_url)
