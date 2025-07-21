@@ -16,8 +16,10 @@ def test_user_flow(browser, generated_customer_data):
     login_page.login('standard_user', 'secret_sauce')
     inventory_page.add_first_item_to_cart()
     checkout_page.start_checkout()
-    checkout_page.fill_checkout_form(generated_customer_data.firstname, generated_customer_data.lastname,
-                                     generated_customer_data.zipcode)
+    checkout_page.fill_checkout_form(
+        generated_customer_data.firstname,
+        generated_customer_data.lastname,
+        generated_customer_data.zipcode)
     checkout_page.finish_checkout()
     logout_page.log_out()
 
