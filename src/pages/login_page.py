@@ -26,8 +26,8 @@ class LoginPage(BasePage):
 class AsyncLoginPage(LoginPage, AsyncBasePage):
     @allure.title('Async login user through login page')
     async def login(self, username: str, password: str):
-        await self.go_to_page('')
-        await self.assert_page_url_equals('')
+        await self.go_to_page('/')
+        await self.assert_page_url_equals('/')
         await self.fill_selector_with_text(self.INPUT_LOGIN_SELECTOR, username)
         await self.assert_element_attr_equals_text(self.INPUT_LOGIN_SELECTOR, 'value', username)
         await self.fill_selector_with_text(self.INPUT_PASSWORD_SELECTOR, password)

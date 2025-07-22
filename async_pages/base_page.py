@@ -1,15 +1,16 @@
 import allure
 from playwright.async_api import Page, expect
 
+from src.enums.base_urls import URL
+
 
 class AsyncBasePage:
     def __init__(self, page: Page):
         self.page = page
-        self.base_url = 'https://www.saucedemo.com'
-        self.endpoint = '/'
 
-    def build_url(self, endpoint: str) -> str:
-        return self.base_url + endpoint
+    @staticmethod
+    def build_url(endpoint: str) -> str:
+        return URL.BASE_DOMAIN.value + endpoint
 
     async def go_to_page(self, endpoint: str):
         with allure.step(f'Go to page with URL : {self.build_url(endpoint)}'):
@@ -41,8 +42,8 @@ class AsyncBasePage:
 
     async def assert_element_enable(self, selector: str):
         with allure.step(f'Assert that {selector} element is enabled'):
-            await expect(self.page.locator(selector).is_enabled())
+            await expect(self.page.locator(selector)).to_be_enabled()
 
     async def assert_text_presented_on_page(self, text: str):
-        with allure.step(f'Assert text "{text}" is presented on page {self.build_url('')}'):
+        with allure.step(f'Assert text "{text}" is presented on page {self.page.url}'):
             await expect(self.page.locator('body')).to_contain_text(text)
