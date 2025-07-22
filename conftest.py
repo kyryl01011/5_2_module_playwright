@@ -1,5 +1,7 @@
 import allure
 import pytest
+
+from playwright.async_api import async_playwright
 from playwright.sync_api import sync_playwright
 from faker import Faker
 
@@ -33,4 +35,12 @@ def generated_customer_data() -> CustomerCreationModel:
         zipcode=faker.zipcode()
     )
 
+
 @pytest.fixture.anyio
+async def async_browser():
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=False)
+
+        yield browser
+
+        await browser.close()
